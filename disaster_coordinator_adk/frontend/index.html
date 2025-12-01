@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disaster Coordinator Frontend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-sA+e2prR0pJ0s6k3aG0dQHkz6Gk8sZr+2Ee3h3oVq3s="
+        crossorigin=""
+      />
+
+    <script>
+      // optional runtime Tailwind config
+      tailwind.config = {
+        theme: { extend: {} },
+        content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"]
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
