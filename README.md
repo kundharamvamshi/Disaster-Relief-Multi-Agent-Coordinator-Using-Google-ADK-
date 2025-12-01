@@ -75,9 +75,5 @@ Frontend:
 Contributions, issues, and pull requests are welcome!
 If you enhance agents, tools, UI, or architecture, please include documentation for maintainability.
 
-📜 License
-
-This project is licensed under the MIT License.
-You are free to use, modify, and distribute with attribution.
 
 
