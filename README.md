@@ -1,75 +1,125 @@
-**📘 Disaster Relief Multi-Agent Coordinator**
+# 🌐 Disaster Relief Multi-Agent Coordinator  
+*A multi-agent disaster response system built for the Kaggle × Google Agentic AI Intensive (Agents for Good Track).*
 
-A Multi-Agent Disaster Response System built for the Kaggle × Google Agentic AI Intensive Program (Agents for Good Track).
+The **Disaster Relief Multi-Agent Coordinator** is an AI-driven system that detects real-time hazard alerts, evaluates risk using multi-agent reasoning, and automatically generates emergency response plans. Using **Google ADK**, **custom tools**, **Google Maps APIs**, and an **interactive map**, the system demonstrates how agentic AI enables smarter disaster management for floods, earthquakes, cyclones, and other emergencies.
 
-The Disaster Relief Multi-Agent Coordinator is an intelligent agentic system that detects real-time environmental hazards, evaluates risk, and generates coordinated emergency response plans using Google ADK, custom tools, weather alert engines, and Google Maps API–based geospatial intelligence.
-It features an interactive disaster map, live alert ingestion, automated volunteer assignment, shelter routing, and structured plan generation powered by multi-agent reasoning.
+---
 
-This project demonstrates how AI agents can assist public safety organizations, NGOs, and emergency authorities in making faster and more informed decisions during floods, earthquakes, cyclones, and other emergencies.
+## 📌 Features
+- Multi-agent architecture powered by Google ADK  
+- LLM-based risk evaluation and planning  
+- Real-time alert ingestion with background producer  
+- Interactive map UI (Leaflet)  
+- Shelter recommendation & routing (Google Maps API)  
+- Volunteer assignment tool  
+- MemoryBank for long-term storage  
+- Observability: logs, tracing, live log viewer  
+- Full-stack integration: FastAPI + React + Vite + TailwindCSS  
 
+---
 
-**🚀 Features**
-   Multi-agent system (CoordinatorAgent, RiskAgent, PlannerAgent) built using Google ADK
-   Real-time hazard alert ingestion with a background producer
-   Interactive geospatial map with markers, zoom, and popups
-   Risk evaluation using LLM-powered reasoning
-   Dynamic evacuation plan generation
-   Volunteer assignment tool
-   Routing & travel time estimation using Google Maps API
-   Nearby shelter recommendation
-   Log viewer for observing agent behavior
-   Long-term memory storage using MemoryBank
-   Modern React frontend with Vite + Tailwind
+## 🧠 ADK Concepts Demonstrated
+This project includes **more than 3** ADK-required features:
+- Multi-Agent System: CoordinatorAgent, RiskAgent, PlannerAgent  
+- LLM-powered tool orchestration using FunctionTools  
+- Custom Tools (weather, volunteers, geocode, routing, shelters)  
+- MemoryBank providing long-term state  
+- Context engineering with structured JSON  
+- Observability via logs endpoint  
 
-**🔧 Requirements**
-    **Backend:**
-      Python 3.10+
-      FastAPI
-      Google ADK
-      python-dotenv
-      uvicorn
-      requests
-      geopy (optional)
-      A valid Google Maps API key in .env
-
-   **Frontend:**
-     Node.js 18+
-     npm or yarn
-     Vite
-     React 18+
-     TailwindCSS
-     react-leaflet + leaflet
-
-**📦 Installation**
-  **1️⃣ Clone the Repository:**
-  **2️⃣ Create & Activate Virtual Environment**
-       cd backend
-       python -m venv .venv
-       .\.venv\Scripts\Activate.ps1     # Windows
-  **3️⃣ Install Requirements**
-     pip install -r requirements.txt
-  **4️⃣ Create .env File**
-     ADK_MODEL=gemini-2.0-flash
-     GOOGLE_MAPS_API_KEY=your_api_key_here
-     And include other API Keys in this file
-  **5️⃣ Run Backend**
-       uvicorn main:app --host 127.0.0.1 --port 8000 --reload
-
-       Your backend will now run at:
-       ➡️ http://127.0.0.1:8000
-   **🌐 Frontend Setup**
-     Open a new terminal:
-     cd frontend
-     npm install
-     npm run dev
-
-     Your frontend will run at:
-     ➡️ http://127.0.0.1:5173
+---
 
 
-**🤝 Contributing**
-	Contributions, improvements, and pull requests are welcome!
-	If you would like to suggest features, fix bugs, optimize agent workflows, or enhance the UI, feel free to open an issue or submit a PR.
-	Please ensure your changes align with the existing project structure and coding style.
+---
+
+## 🛠 Requirements
+
+### Backend
+- Python 3.10+
+- FastAPI
+- Uvicorn
+- Google ADK SDK
+- python-dotenv
+- requests
+- Google Maps API Key
+
+### Frontend
+- Node.js 18+
+- npm
+- React 18+
+- Vite
+- TailwindCSS
+- react-leaflet & leaflet
+
+---
+
+Run Backend
+uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+Backend:
+👉 http://127.0.0.1:8000
+
+Run Frontend
+Open new terminal:
+cd frontend
+npm install
+npm run dev
+
+Frontend:
+👉 http://127.0.0.1:5173
 
 
+flowchart LR
+
+subgraph Frontend
+  UI[React UI<br/>Map, Alerts, Plan, Logs]
+end
+
+subgraph Backend[FastAPI Backend]
+  API[REST API<br/>/poll_alerts /plan /logs]
+  Producer[Alert Producer Thread]
+  Coordinator[CoordinatorAgent (ADK)]
+  Memory[MemoryBank]
+end
+
+subgraph Agents[ADK Agents]
+  Risk[RiskAgent]
+  Planner[PlannerAgent]
+end
+
+subgraph Tools[Custom Tools]
+  Weather[Weather Tool]
+  Volunteer[Volunteer Tool]
+  Geocode[Geocode Tool]
+  Shelter[Shelter Tool]
+  Route[Route Tool]
+end
+
+subgraph External[External APIs]
+  Maps[Google Maps API<br/>Geocode, Routing]
+  WeatherAPI[Weather Service]
+end
+
+UI --> API
+API --> Coordinator
+Coordinator --> Risk
+Coordinator --> Planner
+Coordinator --> Tools
+Producer --> Memory
+Tools --> Maps
+Tools --> WeatherAPI
+API --> Memory
+UI --> API
+
+
+🤝 Contributing
+
+Contributions, issues, and pull requests are welcome!
+If you enhance agents, tools, UI, or architecture, please include documentation for maintainability.
+
+📜 License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute with attribution.
+
+
+## 📂 Project Structure
