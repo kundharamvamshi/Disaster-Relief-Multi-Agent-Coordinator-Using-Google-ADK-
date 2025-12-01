@@ -53,62 +53,21 @@ This project includes **more than 3** ADK-required features:
 
 ---
 
-Run Backend
-uvicorn main:app --host 127.0.0.1 --port 8000 --reload
+## Run Backend
+>>uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 Backend:
 👉 http://127.0.0.1:8000
 
-Run Frontend
+### Run Frontend
 Open new terminal:
-cd frontend
-npm install
-npm run dev
+>>cd frontend
+>>npm install
+>>npm run dev
 
 Frontend:
 👉 http://127.0.0.1:5173
 
 
-flowchart LR
-
-subgraph Frontend
-  UI[React UI<br/>Map, Alerts, Plan, Logs]
-end
-
-subgraph Backend[FastAPI Backend]
-  API[REST API<br/>/poll_alerts /plan /logs]
-  Producer[Alert Producer Thread]
-  Coordinator[CoordinatorAgent (ADK)]
-  Memory[MemoryBank]
-end
-
-subgraph Agents[ADK Agents]
-  Risk[RiskAgent]
-  Planner[PlannerAgent]
-end
-
-subgraph Tools[Custom Tools]
-  Weather[Weather Tool]
-  Volunteer[Volunteer Tool]
-  Geocode[Geocode Tool]
-  Shelter[Shelter Tool]
-  Route[Route Tool]
-end
-
-subgraph External[External APIs]
-  Maps[Google Maps API<br/>Geocode, Routing]
-  WeatherAPI[Weather Service]
-end
-
-UI --> API
-API --> Coordinator
-Coordinator --> Risk
-Coordinator --> Planner
-Coordinator --> Tools
-Producer --> Memory
-Tools --> Maps
-Tools --> WeatherAPI
-API --> Memory
-UI --> API
 
 
 🤝 Contributing
@@ -122,4 +81,3 @@ This project is licensed under the MIT License.
 You are free to use, modify, and distribute with attribution.
 
 
-## 📂 Project Structure
