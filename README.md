@@ -21,22 +21,6 @@ This project demonstrates how AI agents can assist public safety organizations, 
    Long-term memory storage using MemoryBank
    Modern React frontend with Vite + Tailwind
 
-**🗂 Project Folder Structure**
-disaster_coordinator_adk/
-│
-├── backend/
-│   ├── main.py
-│   ├── agents/
-│   ├── tools/
-│   ├── memory/
-│   └── .venv/
-│
-└── frontend/
-    ├── src/
-    ├── public/
-    ├── package.json
-    └── vite.config.js
-
 **🔧 Requirements**
     **Backend:**
       Python 3.10+
